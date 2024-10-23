@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>15-Puzzle Solution</title>
+</head>
+<body>
+    <h1>15-Puzzle Solution</h1>
+    <p>Total Steps: {{ total_steps }}</p>
+
+    {% for step in solution_steps %}
+        <h2>Step: {{ forloop.counter }}</h2>
+        <p>Direction: {{ step.dir }}</p>
+        Hi
+        <p>Puzzle: ... </p>
+        <hr>
+    {% endfor %}
+</body>
+</html> -->
+<!-- templates/puzzle/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-Puzzle Solver</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-gap: 5px;
+        }
+        .grid-item {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 1px solid #000;
+        }
+        .empty {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>15-Puzzle Solver</h1>
+    {% for step in solution %}
+        <div class="step">
+            <h2>Move: {{ step.dir }}</h2>
+            <div class="grid-container">
+                {% for row in step.node %}
+                    {% for cell in row %}
+                        <div class="grid-item {% if cell == 0 %}empty{% endif %}">
+                            {{ cell }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
